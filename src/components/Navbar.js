@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const styles = makeStyles({
   bar: {
     paddingTop: "1.15rem",
-    backgroundColor: "#b5e7f5",
+    backgroundColor: "#9EDFCE",
     ["@media (max-width:780px)"]: {
       flexDirection: "column",
     },
