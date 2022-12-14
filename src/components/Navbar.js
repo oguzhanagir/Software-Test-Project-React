@@ -4,6 +4,7 @@ import logo from "../logo.svg";
 import logoMobile from "../logoMobile.svg";
 import { Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const styles = makeStyles({
   bar: {
@@ -49,16 +50,16 @@ function Navbar() {
       <img src={logo} className={classes.logo} />
       <img src={logoMobile} className={classes.logoMobile} />
       <Typography variant="h4" className={classes.menuItem}>
-        Yeşil Zincir
+        <Link to={"/"}>Yeşil Zincir</Link>
       </Typography>
       <Typography variant="h4" className={classes.menuItem}>
-        Vizyon ve Misyon
+        <Link to={"/Objective"}>Vizyon ve Misyon</Link>
       </Typography>
       <Typography variant="h4" className={classes.menuItem}>
-        Hakkımızda
+        <Link to={"/About"}>Hakkımızda</Link>
       </Typography>
       <Typography variant="h4" className={classes.menuItem}>
-        Bize Ulaşın
+        <Link to={"/Contact"}>Bize Ulaşın</Link>
       </Typography>
       <LoginBtn txt="Giriş Yap" />
     </Toolbar>

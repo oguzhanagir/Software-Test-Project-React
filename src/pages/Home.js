@@ -10,7 +10,6 @@ import FaceIcon from "@material-ui/icons/Face";
 import SpeedIcon from "@material-ui/icons/Speed";
 import { Typography } from "@material-ui/core";
 import Footer from "../components/Footer";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -42,10 +41,13 @@ const styles = makeStyles({
     textAlign: "center",
   },
   bigSpace: {
-    marginTop: "5rem",
+    marginTop: "7rem",
+  },
+  middleSpace: {
+    marginTop: "2.5rem",
   },
   littleSpace: {
-    marginTop: "2.5rem",
+    marginTop: "2rem",
   },
   grid: {
     display: "flex",
@@ -63,7 +65,11 @@ function Home() {
       <ThemeProvider theme={theme}>
         <Navbar />
         <div className={classes.wrapper}>
-          <Typography variant="h3" className={classes.bigSpace} color="primary">
+          <Typography
+            variant="h3"
+            className={classes.middleSpace}
+            color="primary"
+          >
             Yeşil Zincir Projesi Nedir?
           </Typography>
           <Typography
@@ -76,7 +82,7 @@ function Home() {
             projedir.
           </Typography>
         </div>
-        <div className={`${classes.grid} ${classes.bigSpace}`}>
+        <div className={`${classes.grid} ${classes.littleSpace}`}>
           <Grid
             icon={
               <SecurityIcon

@@ -7,7 +7,15 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 
 function Footer() {
   return (
-    <BottomNavigation style={{ backgroundColor: "#9EDFCE" }}>
+    <BottomNavigation
+      style={{
+        backgroundColor: "#9EDFCE",
+        position: "fixed",
+        left: "0",
+        right: "0",
+        bottom: "0",
+      }}
+    >
       <BottomNavigationAction
         color="red"
         label="Facebook"
