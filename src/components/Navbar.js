@@ -50,16 +50,24 @@ function Navbar() {
       <img src={logo} className={classes.logo} />
       <img src={logoMobile} className={classes.logoMobile} />
       <Typography variant="h4" className={classes.menuItem}>
-        <Link to={"/"}>Yeşil Zincir</Link>
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          Yeşil Zincir
+        </Link>
       </Typography>
       <Typography variant="h4" className={classes.menuItem}>
-        <Link to={"/Objective"}>Vizyon ve Misyon</Link>
+        <Link to={"/Objective"} style={{ textDecoration: "none" }}>
+          Vizyon ve Misyon
+        </Link>
       </Typography>
       <Typography variant="h4" className={classes.menuItem}>
-        <Link to={"/About"}>Hakkımızda</Link>
+        <Link to={"/About"} style={{ textDecoration: "none" }}>
+          Hakkımızda
+        </Link>
       </Typography>
       <Typography variant="h4" className={classes.menuItem}>
-        <Link to={"/Contact"}>Bize Ulaşın</Link>
+        <Link to={"/Contact"} style={{ textDecoration: "none" }}>
+          Bize Ulaşın
+        </Link>
       </Typography>
       <LoginBtn txt="Giriş Yap" />
     </Toolbar>

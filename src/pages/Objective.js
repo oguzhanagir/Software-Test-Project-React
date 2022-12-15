@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Typography } from "@material-ui/core";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +31,20 @@ function Objective() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Navbar />
+        <Typography
+          variant="h4"
+          style={{ marginLeft: "100px", marginRight: "100px" }}
+        >
+          <br></br>
+          <p>
+            Vizyonumuz dünyada daha çevreci sistemlerin kullanımının
+            yaygınlaşmasını sağlayarak doğayı korumaya katkı sağlamaktır.
+          </p>
+          <p>
+            Misyonumuz ise bu çevreci sistemlerden birini blokzincir teknolojisi
+            yardımı ile hayata geçirmektir.
+          </p>
+        </Typography>
         <Footer />
       </ThemeProvider>
     </div>
