@@ -5,6 +5,9 @@ import Login from "./pages/Login";
 import Objective from "./pages/Objective";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Password from "./pages/Password";
+import Register from "./pages/Register";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -16,6 +19,8 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Password" element={<Password />} />
+          <Route path="/Register" element={<Register />} />
         </Routes>
       </Router>
     </div>

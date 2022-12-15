@@ -69,7 +69,9 @@ function Navbar() {
           Bize Ulaşın
         </Link>
       </Typography>
-      <LoginBtn txt="Giriş Yap" />
+      <Link to={"/Login"} style={{ textDecoration: "none" }}>
+        <LoginBtn txt="Giriş Yap" />
+      </Link>
     </Toolbar>
   );
 }
