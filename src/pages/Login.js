@@ -24,9 +24,14 @@ function Login(props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
-              Giriş Yap
-            </button>
+            <Link
+              to={"/Admin"}
+              style={{ textDecoration: "none", color: "#FFF" }}
+            >
+              <button type="submit" className="btn btn-primary">
+                Giriş Yap
+              </button>
+            </Link>
           </div>
           <Link to={"/Register"} style={{ textDecoration: "none" }}>
             <p className="forgot-password text-right mt-2">Hesap Oluştur</p>
