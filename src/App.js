@@ -7,6 +7,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Password from "./pages/Password";
 import Register from "./pages/Register";
+import Admin from "./pages/Admin";
+import User from "./pages/User";
+import Personnel from "./pages/Personnel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Password" element={<Password />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/Admin" element={<Admin />} />
+          <Route path="/User" element={<User />} />
+          <Route path="/Personnel" element={<Personnel />} />
         </Routes>
       </Router>
     </div>
