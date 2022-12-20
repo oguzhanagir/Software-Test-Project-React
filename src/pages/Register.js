@@ -7,11 +7,19 @@ function Login(props) {
         <div className="Auth-form-content">
           <h1 className="Auth-form-title">Hesap Oluştur</h1>
           <div className="form-group mt-3">
-            <label>Kullanıcı Adı</label>
+            <label>Ad</label>
             <input
               type="username"
               className="form-control mt-1"
-              placeholder="Kullanıcı adını buraya gir"
+              placeholder="Adınızı buraya giriniz"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Soyad</label>
+            <input
+              type="username"
+              className="form-control mt-1"
+              placeholder="Soyadınızı buraya giriniz"
             />
           </div>
           <div className="form-group mt-3">
@@ -27,7 +35,7 @@ function Login(props) {
             <input
               type="password"
               className="form-control mt-1"
-              placeholder="Şifreni buraya gir"
+              placeholder="Şifrenizi buraya giriniz"
             />
           </div>
           <div className="form-group mt-3">
@@ -35,7 +43,7 @@ function Login(props) {
             <input
               type="password"
               className="form-control mt-1"
-              placeholder="Şifreni tekrar gir"
+              placeholder="Şifrenizi tekrar giriniz"
             />
           </div>
           <br></br>
