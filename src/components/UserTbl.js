@@ -1,83 +1,184 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
+import { nanoid } from "nanoid";
+import UserData from "../Data/UserData.json";
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
 
-const data = [
-  {
-    number: 1,
-    name: "Ahmet",
-    surname: "Yılmaz",
-    age: 25,
-    gender: "Erkek",
-    rcy: 100,
-  },
-  {
-    number: 2,
-    name: "Mehmet",
-    surname: "Gezer",
-    age: 39,
-    gender: "Erkek",
-    rcy: 560,
-  },
-  {
-    number: 3,
-    name: "Ersin",
-    surname: "Yıkılmaz",
-    age: 62,
-    gender: "Erkek",
-    rcy: 8000,
-  },
-  {
-    number: 4,
-    name: "Mahmut",
-    surname: "Güven",
-    age: 33,
-    gender: "Erkek",
-    rcy: 1002,
-  },
-  {
-    number: 5,
-    name: "Bora",
-    surname: "Yerli",
-    age: 56,
-    gender: "Erkek",
-    rcy: 5330,
-  },
-  {
-    number: 6,
-    name: "Cem",
-    surname: "Bahçeci",
-    age: 45,
-    gender: "Erkek",
-    rcy: 10850,
-  },
-];
+const UserTbl = () => {
+  const [contacts, setContacts] = useState(UserData);
+  const [addFormData, setAddFormData] = useState({
+    fullName: "",
+    surname: "",
+    phoneNumber: "",
+    email: "",
+  });
 
-function UserTbl() {
+  const [editFormData, setEditFormData] = useState({
+    fullName: "",
+    surname: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  const [editContactId, setEditContactId] = useState(null);
+
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData);
+  };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
+  const handleAddFormSubmit = (event) => {
+    event.preventDefault();
+
+    const newContact = {
+      id: nanoid(),
+      fullName: addFormData.fullName,
+      surname: addFormData.surname,
+      phoneNumber: addFormData.phoneNumber,
+      email: addFormData.email,
+    };
+
+    const newContacts = [...contacts, newContact];
+    setContacts(newContacts);
+  };
+
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedContact = {
+      id: editContactId,
+      fullName: editFormData.fullName,
+      surname: editFormData.surname,
+      phoneNumber: editFormData.phoneNumber,
+      email: editFormData.email,
+    };
+
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === editContactId);
+
+    newContacts[index] = editedContact;
+
+    setContacts(newContacts);
+    setEditContactId(null);
+  };
+
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+
+    const formValues = {
+      fullName: contact.fullName,
+      surname: contact.surname,
+      phoneNumber: contact.phoneNumber,
+      email: contact.email,
+    };
+
+    setEditFormData(formValues);
+  };
+
+  const handleCancelClick = () => {
+    setEditContactId(null);
+  };
+
+  const handleDeleteClick = (contactId) => {
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === contactId);
+
+    newContacts.splice(index, 1);
+
+    setContacts(newContacts);
+  };
+
   return (
-    <div>
-      <table>
-        <tr>
-          <th style={{ color: "red" }}>Sıra</th>
-          <th style={{ color: "red" }}>Ad</th>
-          <th style={{ color: "red" }}>Soyad</th>
-          <th style={{ color: "red" }}>Yaş</th>
-          <th style={{ color: "red" }}>Cinsiyet</th>
-          <th style={{ color: "red" }}>RCY Miktarı</th>
-        </tr>
-        {data.map((val, key) => {
-          return (
-            <tr key={key}>
-              <td>{val.number}</td>
-              <td>{val.name}</td>
-              <td>{val.surname}</td>
-              <td>{val.age}</td>
-              <td>{val.gender}</td>
-              <td>{val.rcy}</td>
+    <div className="app-container">
+      <form onSubmit={handleEditFormSubmit}>
+        <table>
+          <thead>
+            <tr>
+              <th>Ad</th>
+              <th>Soyad</th>
+              <th>Telefon Numarası</th>
+              <th>E-posta adresi</th>
+              <th>Eylemler</th>
             </tr>
-          );
-        })}
-      </table>
+          </thead>
+          <tbody>
+            {contacts.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <EditableRow
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    contact={contact}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
+
+      <h3>Kullanıcı ekle</h3>
+      <form onSubmit={handleAddFormSubmit}>
+        <input
+          type="text"
+          name="fullName"
+          required="required"
+          placeholder="Lütfen ad giriniz"
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="text"
+          name="surname"
+          required="required"
+          placeholder="Lütfen soyad giriniz"
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="text"
+          name="phoneNumber"
+          required="required"
+          placeholder="Lütfen telefon numarası giriniz"
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="email"
+          name="email"
+          required="required"
+          placeholder="Lütfen e-posta adresi giriniz"
+          onChange={handleAddFormChange}
+        />
+        <button type="submit">Kullanıcı ekle</button>
+      </form>
     </div>
   );
-}
+};
 
 export default UserTbl;

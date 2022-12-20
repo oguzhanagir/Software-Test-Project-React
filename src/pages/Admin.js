@@ -18,10 +18,10 @@ function Admin() {
   return (
     <div className="App">
       <div className={classes.layout}>
-        <h1>Görevliler</h1>
+        <h1 style={{ color: "red" }}>Görevliler</h1>
         <PersonnelTbl />
         <br></br>
-        <h1>Kullanıcılar</h1>
+        <h1 style={{ color: "red" }}>Kullanıcılar</h1>
         <UserTbl />
       </div>
     </div>
