@@ -94,3 +94,7 @@ th {
 td {
   text-align: center;
 }
+
+.parent {
+  display: flex;
+}
