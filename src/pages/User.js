@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import TransferTable from "../components/TransferTable";
+import UserData from "../Data/UserData.json";
 
 const styles = makeStyles({
   layout: {
@@ -39,7 +40,10 @@ function User() {
         </Link>
       </div>
       <div className={classes.layout}>
-        <h3 style={{ color: "red", fontSize: "35px" }}>Para Transferi Yap</h3>
+        <h2 style={{ color: "red", fontSize: "45px" }}>Hesap Bilgilerim</h2>
+        <h3>Ad - Soyad: ?</h3>
+        <h3>Hesaptaki RCY miktarı : ?</h3>
+        <h2 style={{ color: "red", fontSize: "45px" }}>Para Transferi Yap</h2>
         <TransferTable />
       </div>
     </div>
