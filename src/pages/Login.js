@@ -25,7 +25,7 @@ function Login(props) {
           </div>
           <div className="d-grid gap-2 mt-3">
             <Link
-              to={"/User"}
+              to={"/Personnel"}
               style={{ textDecoration: "none", color: "#FFF" }}
             >
               <button type="submit" className="btn btn-primary">

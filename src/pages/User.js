@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import TransferTable from "../components/TransferTable";
-import UserData from "../Data/UserData.json";
 
 const styles = makeStyles({
   layout: {
@@ -23,7 +22,8 @@ function User() {
         <h1
           style={{
             width: "100%",
-            backgroundColor: "lightBlue",
+            backgroundColor: "green",
+            color: "#FFF",
             textAlign: "left",
           }}
         >

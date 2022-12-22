@@ -23,7 +23,8 @@ function Admin() {
         <h1
           style={{
             width: "100%",
-            backgroundColor: "lightBlue",
+            backgroundColor: "green",
+            color: "#FFF",
             textAlign: "left",
           }}
         >

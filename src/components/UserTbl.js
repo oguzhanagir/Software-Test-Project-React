@@ -121,12 +121,14 @@ const UserTbl = () => {
         <table>
           <thead>
             <tr>
-              <th>Ad</th>
-              <th>Soyad</th>
-              <th>Telefon Numarası</th>
-              <th>E-posta adresi</th>
-              <th>RCY</th>
-              <th>Eylemler</th>
+              <th style={{ color: "red", fontSize: "20px" }}>Ad</th>
+              <th style={{ color: "red", fontSize: "20px" }}>Soyad</th>
+              <th style={{ color: "red", fontSize: "20px" }}>
+                Telefon Numarası
+              </th>
+              <th style={{ color: "red", fontSize: "20px" }}>E-posta adresi</th>
+              <th style={{ color: "red", fontSize: "20px" }}>RCY</th>
+              <th style={{ color: "red", fontSize: "20px" }}>Eylemler</th>
             </tr>
           </thead>
           <tbody>
@@ -151,7 +153,7 @@ const UserTbl = () => {
         </table>
       </form>
 
-      <h3>Kullanıcı ekle</h3>
+      <h3 style={{ color: "red", fontSize: "30px" }}>Kullanıcı ekle</h3>
       <form onSubmit={handleAddFormSubmit}>
         <input
           type="text"
