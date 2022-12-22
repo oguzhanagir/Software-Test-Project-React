@@ -11,6 +11,7 @@ const UserTbl = () => {
     surname: "",
     phoneNumber: "",
     email: "",
+    RCY: "",
   });
 
   const [editFormData, setEditFormData] = useState({
@@ -18,6 +19,7 @@ const UserTbl = () => {
     surname: "",
     phoneNumber: "",
     email: "",
+    RCY: "",
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -55,6 +57,7 @@ const UserTbl = () => {
       surname: addFormData.surname,
       phoneNumber: addFormData.phoneNumber,
       email: addFormData.email,
+      RCY: addFormData.RCY,
     };
 
     const newContacts = [...contacts, newContact];
@@ -70,6 +73,7 @@ const UserTbl = () => {
       surname: editFormData.surname,
       phoneNumber: editFormData.phoneNumber,
       email: editFormData.email,
+      RCY: editFormData.RCY,
     };
 
     const newContacts = [...contacts];
@@ -91,6 +95,7 @@ const UserTbl = () => {
       surname: contact.surname,
       phoneNumber: contact.phoneNumber,
       email: contact.email,
+      RCY: contact.RCY,
     };
 
     setEditFormData(formValues);
@@ -120,6 +125,7 @@ const UserTbl = () => {
               <th>Soyad</th>
               <th>Telefon Numarası</th>
               <th>E-posta adresi</th>
+              <th>RCY</th>
               <th>Eylemler</th>
             </tr>
           </thead>

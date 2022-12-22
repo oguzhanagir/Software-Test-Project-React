@@ -27,7 +27,15 @@ function Login(props) {
             <input
               type="email"
               className="form-control mt-1"
-              placeholder="E-posta adresini buraya gir"
+              placeholder="E-posta adresinizi buraya giriniz"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Telefon Numarası</label>
+            <input
+              type="text"
+              className="form-control mt-1"
+              placeholder="Telefon numaranızı buraya giriniz"
             />
           </div>
           <div className="form-group mt-3">

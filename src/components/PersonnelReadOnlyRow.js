@@ -1,13 +1,16 @@
 import React from "react";
 
-const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
+const PersonnelReadOnlyRow = ({
+  contact,
+  handleEditClick,
+  handleDeleteClick,
+}) => {
   return (
     <tr>
       <td>{contact.fullName}</td>
       <td>{contact.surname}</td>
       <td>{contact.phoneNumber}</td>
       <td>{contact.email}</td>
-      <td>{contact.RCY}</td>
       <td>
         <button
           type="button"
@@ -23,4 +26,4 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   );
 };
 
-export default ReadOnlyRow;
+export default PersonnelReadOnlyRow;

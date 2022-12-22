@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditableRow = ({
+const PersonnelEditableRow = ({
   editFormData,
   handleEditFormChange,
   handleCancelClick,
@@ -48,16 +48,6 @@ const EditableRow = ({
         ></input>
       </td>
       <td>
-        <input
-          type="text"
-          required="required"
-          placeholder="RCY giriniz"
-          name="RCY"
-          value={editFormData.RCY}
-          onChange={handleEditFormChange}
-        ></input>
-      </td>
-      <td>
         <button type="submit">Kaydet</button>
         <button type="button" onClick={handleCancelClick}>
           İptal et
@@ -67,4 +57,4 @@ const EditableRow = ({
   );
 };
 
-export default EditableRow;
+export default PersonnelEditableRow;

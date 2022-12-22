@@ -4,27 +4,31 @@
     "fullName": "Burhan",
     "surname": "Dagli",
     "phoneNumber": "999999998",
-    "email": "burhandagli@example.com"
+    "email": "burhandagli@example.com",
+    "RCY":800
   },
   {
     "id": 2,
     "fullName": "Erdem",
     "surname": "Tarlaci",
     "phoneNumber": "999999995",
-    "email": "erdemtarlaci@example.com"
+    "email": "erdemtarlaci@example.com",
+    "RCY":7490
   },
   {
     "id": 3,
     "fullName": "Ferhat",
     "surname": "Bicer",
     "phoneNumber": "299999998",
-    "email": "ferhatbicer@example.com"
+    "email": "ferhatbicer@example.com",
+    "RCY":40
   },
   {
     "id": 4,
     "fullName": "Mesut",
     "surname": "Gelir",
     "phoneNumber": "999988995",
-    "email": "mesutgelir@example.com"
+    "email": "mesutgelir@example.com",
+    "RCY":10748
   }
 ]

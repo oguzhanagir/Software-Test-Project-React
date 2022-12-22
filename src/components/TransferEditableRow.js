@@ -12,8 +12,8 @@ const EditableRow = ({
           type="text"
           required="required"
           placeholder="Miktar Giriniz"
-          name="fullName"
-          value={editFormData.fullName}
+          name="transferAmount"
+          value={editFormData.transferAmount}
           onChange={handleEditFormChange}
         ></input>
       </td>

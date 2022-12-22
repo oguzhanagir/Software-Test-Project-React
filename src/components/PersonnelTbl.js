@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from "react";
 import { nanoid } from "nanoid";
 import UserData from "../Data/PersonnelData.json";
-import ReadOnlyRow from "./ReadOnlyRow";
-import EditableRow from "./EditableRow";
+import PersonnelReadOnlyRow from "./PersonnelReadOnlyRow";
+import PersonnelEditableRow from "./PersonnelEditableRow";
 
 const PersonnelTbl = () => {
   const [contacts, setContacts] = useState(UserData);
@@ -127,13 +127,13 @@ const PersonnelTbl = () => {
             {contacts.map((contact) => (
               <Fragment>
                 {editContactId === contact.id ? (
-                  <EditableRow
+                  <PersonnelEditableRow
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
                   />
                 ) : (
-                  <ReadOnlyRow
+                  <PersonnelReadOnlyRow
                     contact={contact}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}
