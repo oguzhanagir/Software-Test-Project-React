@@ -152,7 +152,170 @@ const UserTbl = () => {
           </tbody>
         </table>
       </form>
+      <br></br>
+      <br></br>
+      <h3 style={{ color: "blue" }}>Pet Ekle</h3>
+      <td style={{ display: "flex" }}>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "azure", height: "80px", width: "85px" }}
+        >
+          0,5L Pet Şişe
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "azure" }}
+        >
+          1,0L Pet Şişe
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "azure" }}
+        >
+          1,5L Pet Şişe
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "azure" }}
+        >
+          2,0L Pet Şişe
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "azure" }}
+        >
+          2,5L Pet Şişe
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "azure" }}
+        >
+          3,0L Pet Şişe
+        </button>
+      </td>
+      <h3 style={{ color: "#6A6565" }}>Metal Ekle</h3>
+      <td style={{ display: "flex" }}>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#D0C1C1" }}
+        >
+          0,5L Metal Matara
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#D0C1C1" }}
+        >
+          1,0L Metal Matara
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#D0C1C1" }}
+        >
+          1,5L Metal Matara
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#D0C1C1" }}
+        >
+          2,0L Metal Matara
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#D0C1C1" }}
+        >
+          2,5L Metal Matara
+        </button>
+      </td>
+      <h3 style={{ color: "#FFA833" }}>Alüminyum Ekle</h3>
+      <td style={{ display: "flex" }}>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#E9B063" }}
+        >
+          0,5L Alüminyum Kutu
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#E9B063" }}
+        >
+          1,0L Alüminyum Kutu
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#E9B063" }}
+        >
+          1,5L Alüminyum Kutu
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#E9B063" }}
+        >
+          2,0L Alüminyum Kutu
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#E9B063" }}
+        >
+          2,5L Alüminyum Kutu
+        </button>
+      </td>
+      <h3 style={{ color: "#50E53E" }}>Kağıt Ekle</h3>
+      <td style={{ display: "flex" }}>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#90F783" }}
+        >
+          0,5L Kağıt Bardak
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#90F783" }}
+        >
+          1,0L Kağıt Bardak
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#90F783" }}
+        >
+          1,5L Kağıt Bardak
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#90F783" }}
+        >
+          2,0L Kağıt Bardak
+        </button>
+        <button
+          type="button"
+          onClick={(event) => handleEditClick(event)}
+          style={{ backgroundColor: "#90F783" }}
+        >
+          2,5L Kağıt Bardak
+        </button>
+      </td>
 
+      <br></br>
+      <br></br>
       <h3 style={{ color: "red", fontSize: "30px" }}>Kullanıcı ekle</h3>
       <form onSubmit={handleAddFormSubmit}>
         <input
