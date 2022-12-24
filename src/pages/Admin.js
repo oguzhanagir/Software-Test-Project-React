@@ -11,9 +11,10 @@ const styles = makeStyles({
     textAlign: "center",
     marginTop: "50px",
     marginBottom: "50px",
+    fontSize: "18px",
+    fontWeight: "500",
   },
 });
-
 function Admin() {
   const classes = styles();
 
@@ -23,7 +24,8 @@ function Admin() {
         <h1
           style={{
             width: "100%",
-            backgroundColor: "lightBlue",
+            backgroundColor: "green",
+            color: "#FFF",
             textAlign: "left",
           }}
         >

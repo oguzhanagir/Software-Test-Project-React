@@ -115,11 +115,13 @@ const PersonnelTbl = () => {
         <table>
           <thead>
             <tr>
-              <th>Ad</th>
-              <th>Soyad</th>
-              <th>Telefon Numarası</th>
-              <th>E-posta</th>
-              <th>Eylemler</th>
+              <th style={{ color: "red", fontSize: "20px" }}>Ad</th>
+              <th style={{ color: "red", fontSize: "20px" }}>Soyad</th>
+              <th style={{ color: "red", fontSize: "20px" }}>
+                Telefon Numarası
+              </th>
+              <th style={{ color: "red", fontSize: "20px" }}>E-posta</th>
+              <th style={{ color: "red", fontSize: "20px" }}>Eylemler</th>
             </tr>
           </thead>
           <tbody>
@@ -144,7 +146,7 @@ const PersonnelTbl = () => {
         </table>
       </form>
 
-      <h3>Personel ekle</h3>
+      <h3 style={{ color: "red", fontSize: "30px" }}>Personel ekle</h3>
       <form onSubmit={handleAddFormSubmit}>
         <input
           type="text"
