@@ -1,11 +1,10 @@
 import React, { useState, Fragment } from "react";
 import { nanoid } from "nanoid";
-import UserData from "../Data/UserData.json";
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
 
 const UserTbl = () => {
-  const [contacts, setContacts] = useState(UserData);
+  const [contacts, setContacts] = useState([]);
   const [addFormData, setAddFormData] = useState({
     fullName: "",
     surname: "",

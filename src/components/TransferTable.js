@@ -1,19 +1,38 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { nanoid } from "nanoid";
-import UserData from "../Data/UserData.json";
 import TransferReadOnlyRow from "./TransferReadOnlyRow";
 import TransferEditableRow from "./TransferEditableRow";
+import axios  from "axios";
+
+
 
 const TransferTable = () => {
-  const [contacts, setContacts] = useState(UserData);
+
+  const [contacts, setContacts] = useState([]);
+  
+  useEffect(()=>{
+    const fetchData = async ()=> {
+      const response = await axios.get("http://localhost:5238/api/User",{
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      });
+      setContacts(response.data);
+    }
+    fetchData();
+  },[]);
+
+
+ 
   const [addFormData, setAddFormData] = useState({
-    fullName: "",
-    surname: "",
+    firstName: "",
+    lastName: "",
   });
 
   const [editFormData, setEditFormData] = useState({
-    fullName: "",
-    surname: "",
+    firstName: "",
+    lastName: "",
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -47,8 +66,8 @@ const TransferTable = () => {
 
     const newContact = {
       id: nanoid(),
-      fullName: addFormData.fullName,
-      surname: addFormData.surname,
+      firstName: addFormData.firstName,
+      lastName: addFormData.lastName,
     };
 
     const newContacts = [...contacts, newContact];
@@ -60,8 +79,7 @@ const TransferTable = () => {
 
     const editedContact = {
       id: editContactId,
-      fullName: editFormData.fullName,
-      surname: editFormData.surname,
+      firstName: editFormData.lastName,
     };
 
     const newContacts = [...contacts];
@@ -79,9 +97,11 @@ const TransferTable = () => {
     setEditContactId(contact.id);
 
     const formValues = {
-      fullName: contact.fullName,
-      surname: contact.surname,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
     };
+
+   
 
     setEditFormData(formValues);
   };

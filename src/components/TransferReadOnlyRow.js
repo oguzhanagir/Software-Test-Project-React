@@ -3,8 +3,8 @@ import React from "react";
 const TransferReadOnlyRow = ({ contact, handleEditClick }) => {
   return (
     <tr>
-      <td>{contact.fullName}</td>
-      <td>{contact.surname}</td>
+      <td>{contact.firstName}</td>
+      <td>{contact.lastName}</td>
       <td>
         <button
           type="button"

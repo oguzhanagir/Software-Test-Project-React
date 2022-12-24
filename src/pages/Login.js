@@ -10,7 +10,7 @@ function Login(props) {
           <div className="form-group mt-3">
             <label>E-posta Adresi</label>
             <input
-              type="email"
+              type="mail"
               className="form-control mt-1"
               placeholder="E-posta adresini buraya gir"
             />

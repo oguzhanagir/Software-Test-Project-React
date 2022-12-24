@@ -1,41 +1,81 @@
-import React from "react";
+import React, { useState, useEffect,Component} from "react";
+import axios from "axios";
+const qs = require('qs')
 
-function Login(props) {
+const Login = () =>{
+
+  const [formValue, setFormValue] = React.useState({
+    firstName:"",
+    lastName:"",
+    mail:"",
+    password:"",
+  });
+  
+  const handleChange = event => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value
+    });
+  }
+
+  
+
+  const handleSubmit = async() => {
+    const registerFormData = new FormData();
+
+    registerFormData.append("firstName",formValue.firstName)
+    registerFormData.append("lastName",formValue.lastName)
+    registerFormData.append("mail",formValue.mail)
+    registerFormData.append("password",formValue.password)
+
+    console.log(registerFormData)
+
+    const headers = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Method": "POST",
+      "Content-Type": "application/json",
+  }
+
+  
+  try {
+    await axios.post(`http://localhost:5238/api/Auth/Register`,  registerFormData,)
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
+  
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form">
+      <form action="/User" className="Auth-form" onSubmit={handleSubmit}>
         <div className="Auth-form-content">
           <h1 className="Auth-form-title">Hesap Oluştur</h1>
           <div className="form-group mt-3">
             <label>Ad</label>
             <input
-              type="username"
+              type="firstName"
               className="form-control mt-1"
               placeholder="Adınızı buraya giriniz"
+              onChange={handleChange}
             />
           </div>
           <div className="form-group mt-3">
             <label>Soyad</label>
             <input
-              type="username"
+              type="lastName"
               className="form-control mt-1"
               placeholder="Soyadınızı buraya giriniz"
+              onChange={handleChange}
             />
           </div>
           <div className="form-group mt-3">
             <label>E-posta Adresi</label>
             <input
-              type="email"
+              type="mail"
               className="form-control mt-1"
               placeholder="E-posta adresinizi buraya giriniz"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Telefon Numarası</label>
-            <input
-              type="text"
-              className="form-control mt-1"
-              placeholder="Telefon numaranızı buraya giriniz"
+              onChange={handleChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -44,14 +84,7 @@ function Login(props) {
               type="password"
               className="form-control mt-1"
               placeholder="Şifrenizi buraya giriniz"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Şifre Kontrol</label>
-            <input
-              type="password"
-              className="form-control mt-1"
-              placeholder="Şifrenizi tekrar giriniz"
+              onChange={handleChange}
             />
           </div>
           <br></br>
@@ -64,5 +97,7 @@ function Login(props) {
       </form>
     </div>
   );
+
+  
 }
 export default Login;
