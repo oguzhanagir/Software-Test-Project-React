@@ -1,4 +1,4 @@
-##Yeşil zincir projesi blockchain teknolojisini kullanarak doğayı korumayı sağlayan bir web tabanlı bir projedir.
+##Yeşil zincir projesi blockchain teknolojisini kullanarak doğayı korumayı sağlayan bir web tabanlı bir projedir.##
 <br>
 ##Kullanılan Teknolojiler:##
 *#Frontend - React#*
