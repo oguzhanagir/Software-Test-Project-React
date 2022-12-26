@@ -1,18 +1,14 @@
-# Yeşil Zincir
+<h1>Yeşil Zincir</h1>
 <br>
 <br>
-## Yeşil zincir projesi blockchain teknolojisini kullanarak doğayı korumayı sağlayan bir web tabanlı bir projedir.
+<h2>Yeşil zincir projesi blockchain teknolojisini kullanarak doğayı korumayı sağlayan bir web tabanlı bir projedir.<h2>
 <br>
-<br>
-## Kullanılan Teknolojiler:
-<br>
-# *Frontend - React
-<br>
-# *Backend - .Net Core
-<br>
-# *Versiyon kontrol sistemi - Github
-<br>
-# *Kod editörü - Visual Studio Code
-<br>
-# *Yazılım test programı - Source Monitor
+Kullanılan Teknolojiler:
+  <ul style="margin-top: 5px">
+    <li>Frontend - React</li>
+    <li>Backend - .Net Core</li>
+    <li>Versiyon Kontrol sistemi- Github</li>
+    <li>Kod Editörü - Visual Studio Code</li>
+    <li>Yazılım Test Programı - Source Monitor</li>
+  </ul>
 <br>
