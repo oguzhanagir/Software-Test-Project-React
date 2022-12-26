@@ -1,4 +1,4 @@
-<h1>Yeşil Zincir</h1>
+<h1>:seedling:Yeşil Zincir:knot:</h1>
 <br>
 <br>
 <h2>Yeşil zincir projesi blockchain teknolojisini kullanarak doğayı korumayı sağlayan bir web tabanlı bir projedir.<h2>
