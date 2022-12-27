@@ -6,12 +6,6 @@ import axios from "axios";
 import CategoryTable from "./CategoryTable";
 
 const UserTbl = () => {
-  const [addFormData, setAddFormData] = useState({
-    firstName: "",
-    lastName: "",
-    mail: "",
-    RCY: "",
-  });
 
   const [editFormData, setEditFormData] = useState({
     firstName: "",
@@ -27,11 +21,6 @@ const UserTbl = () => {
   const [editContactId, setEditContactId] = useState(null);
   const [contacts, setContacts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [balances, setBalances] = useState({
-    shaAddress:"",
-    balanceValue:0
-  });
-  
 
   useEffect(()=>{
     const fetchData = async ()=> {
@@ -56,39 +45,11 @@ const UserTbl = () => {
     }
     fetchCategory();
 
-    const addBalance = async ()=> {
-      await axios.get(`http://localhost:5238/api/Balance/AddBalance?shaAddress=test&balanceValue=32`,{
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
-      });
-      
-    }
-    addBalance();
-
-    
-
-
-
-
     
   },[]);
 
-  
+
  
-
-  const handleAddFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...addFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setAddFormData(newFormData);
-  };
 
   const handleEditFormChange = (event) => {
     event.preventDefault();
@@ -101,20 +62,7 @@ const UserTbl = () => {
 
     setEditFormData(newFormData);
   };
-  const handleAddFormSubmit = (event) => {
-    event.preventDefault();
-
-    const newContact = {
-      id: nanoid(),
-      firstName: addFormData.firstName,
-      lastname: addFormData.lastname,
-      mail: addFormData.mail,
-      RCY: addFormData.RCY,
-    };
-
-    const newContacts = [...contacts, newContact];
-    setContacts(newContacts);
-  };
+ 
 
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
@@ -205,25 +153,6 @@ const UserTbl = () => {
       <br></br>
       <br></br>
 
-      <form>
-        <input
-            type="text"
-            required="required"
-            placeholder="SHA Adresi Giriniz"
-            name="shaAddress"
-            value={editFormData.fullName}
-            onChange={handleEditFormChange}
-          ></input>
-          <input
-            type="text"
-            required="required"
-            placeholder="Coin Miktari Giriniz"
-            name="balanceValue"
-            value={editFormData.fullName}
-            onChange={handleEditFormChange}
-          ></input>
-      </form>
-    
       {categories.map((category)=>(
       <CategoryTable categories={category}>
         

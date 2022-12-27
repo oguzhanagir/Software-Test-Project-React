@@ -57,7 +57,7 @@ const TransferTable = () => {
  
   const handleEditFormSubmit = (event) => {
     const fetchTransfer = async (props)=> {
-      const responseTransfer = await axios.post(`http://localhost:5238/api/Balance/BalanceTransfer?sender=1&receiver=${editContactId}&valueCarbon=${editFormData.transferAmount}`,{
+      const responseTransfer = await axios.post(`http://localhost:5238/api/Balance/BalanceTransfer?sender=20&receiver=${editContactId}&valueCarbon=${editFormData.transferAmount}`,{
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',

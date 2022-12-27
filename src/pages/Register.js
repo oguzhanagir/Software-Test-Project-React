@@ -16,6 +16,7 @@ const Login = () =>{
       ...formValue,
       [event.target.name]: event.target.value
     });
+    console.log(formValue.firstName)
   }
 
 

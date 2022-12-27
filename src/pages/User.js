@@ -21,12 +21,14 @@ const styles = makeStyles({
 function User() {
   const classes = styles();
   const [balances, setBalances] = useState([]);
-  const [users, setUser] = useState([]);
+  const [users, setUser] = useState({
+ 
+  });
   
 
   useEffect(()=>{
     const fetchBalance = async ()=> {
-      const responseBalance = await axios.get("http://localhost:5238/api/Balance/GetBalance?id=1",{
+      const responseBalance = await axios.get("http://localhost:5238/api/Balance/GetBalance?id=20",{
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
@@ -37,7 +39,7 @@ function User() {
     fetchBalance();
 
     const fetchUser = async ()=> {
-      const responseUser = await axios.get("http://localhost:5238/api/User/1",{
+      const responseUser = await axios.get("http://localhost:5238/api/User/20",{
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',

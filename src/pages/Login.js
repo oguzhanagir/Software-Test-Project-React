@@ -3,25 +3,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Login(props) {
-  const [formValue, setFormValue] = React.useState({
-    firstName:"",
-    lastName:"",
-    mail:"",
-    password:"",
-    actionMethod:"",
-    result:""
-  });
+  const [formValue, setFormValue] = React.useState([]);
   
-  const handleChange = event => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...formValue };
-    newFormData[fieldName] = fieldValue;
-
-    setFormValue(newFormData);
+  const handleChanges = event => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value
+    });
 
   }
 
@@ -36,6 +24,10 @@ function Login(props) {
     
   try {
     formValue.result =  axios.post(`http://localhost:5238/api/Auth/Login?mail=${formValue.mail}.com&password=${formValue.password}`)
+    if(formValue.result === true)
+    {
+      formValue.actionMethod = "/User";
+    }
   } catch (error) {
     console.log(error)
   } 
@@ -44,7 +36,7 @@ function Login(props) {
 
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form" action= {formValue.actionMethod} onSubmit={handleSubmit}>
+      <form className="Auth-form" action= "/User" onSubmit={handleSubmit}>
         <div className="Auth-form-content">
           <h1 className="Auth-form-title">Giriş Yap</h1>
           <div className="form-group mt-3">
@@ -53,7 +45,8 @@ function Login(props) {
               type="mail"
               className="form-control mt-1"
               placeholder="E-posta adresini buraya gir"
-              onChange={handleChange}
+              value={formValue.mail}
+              onChange={handleChanges}
             />
           </div>
           <div className="form-group mt-3">
@@ -62,7 +55,8 @@ function Login(props) {
               type="password"
               className="form-control mt-1"
               placeholder="Şifreni buraya gir"
-              onChange={handleChange}
+              value={formValue.password}
+              onChange={handleChanges}
             />
           </div>
           <div className="d-grid gap-2 mt-3">
