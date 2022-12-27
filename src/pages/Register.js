@@ -18,6 +18,7 @@ const Login = () =>{
     });
   }
 
+
   
 
   const handleSubmit = async() => {
@@ -28,7 +29,7 @@ const Login = () =>{
     registerFormData.append("mail",formValue.mail)
     registerFormData.append("password",formValue.password)
 
-    console.log(registerFormData)
+
 
     const headers = {
       "Access-Control-Allow-Origin": "*",

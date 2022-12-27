@@ -1,27 +1,82 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment,useEffect } from "react";
 import { nanoid } from "nanoid";
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
+import axios from "axios";
+import CategoryTable from "./CategoryTable";
 
 const UserTbl = () => {
-  const [contacts, setContacts] = useState([]);
   const [addFormData, setAddFormData] = useState({
-    fullName: "",
-    surname: "",
-    phoneNumber: "",
-    email: "",
+    firstName: "",
+    lastName: "",
+    mail: "",
     RCY: "",
   });
 
   const [editFormData, setEditFormData] = useState({
-    fullName: "",
-    surname: "",
-    phoneNumber: "",
-    email: "",
+    firstName: "",
+    lastName: "",
+    mail: "",
     RCY: "",
   });
 
+
+
+  
+
   const [editContactId, setEditContactId] = useState(null);
+  const [contacts, setContacts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [balances, setBalances] = useState({
+    shaAddress:"",
+    balanceValue:0
+  });
+  
+
+  useEffect(()=>{
+    const fetchData = async ()=> {
+      const response = await axios.get("http://localhost:5238/api/User",{
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      });
+      setContacts(response.data);
+    }
+    fetchData();
+
+    const fetchCategory = async ()=> {
+      const response = await axios.get("http://localhost:5238/api/Category",{
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      });
+      setCategories(response.data);
+    }
+    fetchCategory();
+
+    const addBalance = async ()=> {
+      await axios.get(`http://localhost:5238/api/Balance/AddBalance?shaAddress=test&balanceValue=32`,{
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      });
+      
+    }
+    addBalance();
+
+    
+
+
+
+
+    
+  },[]);
+
+  
+ 
 
   const handleAddFormChange = (event) => {
     event.preventDefault();
@@ -46,16 +101,14 @@ const UserTbl = () => {
 
     setEditFormData(newFormData);
   };
-
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
     const newContact = {
       id: nanoid(),
-      fullName: addFormData.fullName,
-      surname: addFormData.surname,
-      phoneNumber: addFormData.phoneNumber,
-      email: addFormData.email,
+      firstName: addFormData.firstName,
+      lastname: addFormData.lastname,
+      mail: addFormData.mail,
       RCY: addFormData.RCY,
     };
 
@@ -68,10 +121,9 @@ const UserTbl = () => {
 
     const editedContact = {
       id: editContactId,
-      fullName: editFormData.fullName,
-      surname: editFormData.surname,
-      phoneNumber: editFormData.phoneNumber,
-      email: editFormData.email,
+      firstName: editFormData.firstName,
+      lastname: editFormData.lastname,
+      mail: editFormData.mail,
       RCY: editFormData.RCY,
     };
 
@@ -90,12 +142,13 @@ const UserTbl = () => {
     setEditContactId(contact.id);
 
     const formValues = {
-      fullName: contact.fullName,
-      surname: contact.surname,
-      phoneNumber: contact.phoneNumber,
-      email: contact.email,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      mail: contact.mail,
       RCY: contact.RCY,
     };
+
+
 
     setEditFormData(formValues);
   };
@@ -115,18 +168,16 @@ const UserTbl = () => {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container" >
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
               <th style={{ color: "red", fontSize: "20px" }}>Ad</th>
               <th style={{ color: "red", fontSize: "20px" }}>Soyad</th>
-              <th style={{ color: "red", fontSize: "20px" }}>
-                Telefon Numarası
-              </th>
               <th style={{ color: "red", fontSize: "20px" }}>E-posta adresi</th>
               <th style={{ color: "red", fontSize: "20px" }}>RCY</th>
+              <th style={{ color: "red", fontSize: "20px" }}>SHA Adresi</th>
               <th style={{ color: "red", fontSize: "20px" }}>Eylemler</th>
             </tr>
           </thead>
@@ -153,200 +204,32 @@ const UserTbl = () => {
       </form>
       <br></br>
       <br></br>
-      <h3 style={{ color: "blue" }}>Pet Ekle</h3>
-      <td style={{ display: "flex" }}>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "azure", height: "80px", width: "85px" }}
-        >
-          0,5L Pet Şişe
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "azure" }}
-        >
-          1,0L Pet Şişe
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "azure" }}
-        >
-          1,5L Pet Şişe
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "azure" }}
-        >
-          2,0L Pet Şişe
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "azure" }}
-        >
-          2,5L Pet Şişe
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "azure" }}
-        >
-          3,0L Pet Şişe
-        </button>
-      </td>
-      <h3 style={{ color: "#6A6565" }}>Metal Ekle</h3>
-      <td style={{ display: "flex" }}>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#D0C1C1" }}
-        >
-          0,5L Metal Matara
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#D0C1C1" }}
-        >
-          1,0L Metal Matara
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#D0C1C1" }}
-        >
-          1,5L Metal Matara
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#D0C1C1" }}
-        >
-          2,0L Metal Matara
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#D0C1C1" }}
-        >
-          2,5L Metal Matara
-        </button>
-      </td>
-      <h3 style={{ color: "#FFA833" }}>Alüminyum Ekle</h3>
-      <td style={{ display: "flex" }}>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#E9B063" }}
-        >
-          0,5L Alüminyum Kutu
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#E9B063" }}
-        >
-          1,0L Alüminyum Kutu
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#E9B063" }}
-        >
-          1,5L Alüminyum Kutu
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#E9B063" }}
-        >
-          2,0L Alüminyum Kutu
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#E9B063" }}
-        >
-          2,5L Alüminyum Kutu
-        </button>
-      </td>
-      <h3 style={{ color: "#50E53E" }}>Kağıt Ekle</h3>
-      <td style={{ display: "flex" }}>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#90F783" }}
-        >
-          0,5L Kağıt Bardak
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#90F783" }}
-        >
-          1,0L Kağıt Bardak
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#90F783" }}
-        >
-          1,5L Kağıt Bardak
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#90F783" }}
-        >
-          2,0L Kağıt Bardak
-        </button>
-        <button
-          type="button"
-          onClick={(event) => handleEditClick(event)}
-          style={{ backgroundColor: "#90F783" }}
-        >
-          2,5L Kağıt Bardak
-        </button>
-      </td>
 
-      <br></br>
-      <br></br>
-      <h3 style={{ color: "red", fontSize: "30px" }}>Kullanıcı ekle</h3>
-      <form onSubmit={handleAddFormSubmit}>
+      <form>
         <input
-          type="text"
-          name="fullName"
-          required="required"
-          placeholder="Lütfen ad giriniz"
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="surname"
-          required="required"
-          placeholder="Lütfen soyad giriniz"
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="phoneNumber"
-          required="required"
-          placeholder="Lütfen telefon numarası giriniz"
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="email"
-          name="email"
-          required="required"
-          placeholder="Lütfen e-posta adresi giriniz"
-          onChange={handleAddFormChange}
-        />
-        <button type="submit">Kullanıcı ekle</button>
+            type="text"
+            required="required"
+            placeholder="SHA Adresi Giriniz"
+            name="shaAddress"
+            value={editFormData.fullName}
+            onChange={handleEditFormChange}
+          ></input>
+          <input
+            type="text"
+            required="required"
+            placeholder="Coin Miktari Giriniz"
+            name="balanceValue"
+            value={editFormData.fullName}
+            onChange={handleEditFormChange}
+          ></input>
       </form>
+    
+      {categories.map((category)=>(
+      <CategoryTable categories={category}>
+        
+      </CategoryTable>
+    ))}
+   
     </div>
   );
 };

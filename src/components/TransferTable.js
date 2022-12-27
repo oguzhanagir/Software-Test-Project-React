@@ -9,7 +9,8 @@ import axios  from "axios";
 const TransferTable = () => {
 
   const [contacts, setContacts] = useState([]);
-  
+  const [transfer, setTransfer] = useState([]);
+
   useEffect(()=>{
     const fetchData = async ()=> {
       const response = await axios.get("http://localhost:5238/api/User",{
@@ -21,33 +22,25 @@ const TransferTable = () => {
       setContacts(response.data);
     }
     fetchData();
+
+   
+
   },[]);
 
+ 
 
  
-  const [addFormData, setAddFormData] = useState({
-    firstName: "",
-    lastName: "",
-  });
-
   const [editFormData, setEditFormData] = useState({
     firstName: "",
     lastName: "",
+    transferAmount: "",
   });
+
+  
 
   const [editContactId, setEditContactId] = useState(null);
 
-  const handleAddFormChange = (event) => {
-    event.preventDefault();
 
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...addFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setAddFormData(newFormData);
-  };
 
   const handleEditFormChange = (event) => {
     event.preventDefault();
@@ -61,25 +54,28 @@ const TransferTable = () => {
     setEditFormData(newFormData);
   };
 
-  const handleAddFormSubmit = (event) => {
-    event.preventDefault();
-
-    const newContact = {
-      id: nanoid(),
-      firstName: addFormData.firstName,
-      lastName: addFormData.lastName,
-    };
-
-    const newContacts = [...contacts, newContact];
-    setContacts(newContacts);
-  };
-
+ 
   const handleEditFormSubmit = (event) => {
+    const fetchTransfer = async (props)=> {
+      const responseTransfer = await axios.post(`http://localhost:5238/api/Balance/BalanceTransfer?sender=1&receiver=${editContactId}&valueCarbon=${editFormData.transferAmount}`,{
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      setTransfer(responseTransfer.data);
+    
+    }
+    
+
     event.preventDefault();
 
     const editedContact = {
       id: editContactId,
-      firstName: editFormData.lastName,
+      firstName: editFormData.firstName,
+      lastName: editFormData.lastName,
+     
     };
 
     const newContacts = [...contacts];
@@ -87,10 +83,14 @@ const TransferTable = () => {
     const index = contacts.findIndex((contact) => contact.id === editContactId);
 
     newContacts[index] = editedContact;
-
-    setContacts(newContacts);
-    setEditContactId(null);
+    fetchTransfer(); 
+    setTransfer(newContacts)
+    setEditContactId(editContactId);
+    handleCancelClick()
   };
+
+
+
 
   const handleEditClick = (event, contact) => {
     event.preventDefault();
@@ -101,9 +101,9 @@ const TransferTable = () => {
       lastName: contact.lastName,
     };
 
-   
-
+  
     setEditFormData(formValues);
+   
   };
 
   const handleCancelClick = () => {
@@ -137,7 +137,9 @@ const TransferTable = () => {
                   <TransferEditableRow
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
+                    handleEditFormSubmit={handleEditFormSubmit}
                     handleCancelClick={handleCancelClick}
+                    userId={contact.id}
                   />
                 ) : (
                   <TransferReadOnlyRow

@@ -1,10 +1,17 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, Fragment,useEffect } from "react";
+
 
 const EditableRow = ({
   editFormData,
   handleEditFormChange,
+  handleEditFormSubmit,
   handleCancelClick,
+  userId
 }) => {
+
+
+
   return (
     <tr>
       <td>
@@ -18,7 +25,7 @@ const EditableRow = ({
         ></input>
       </td>
       <td>
-        <button type="submit">Onayla</button>
+        <button type="submit" onClick={handleEditFormSubmit}>Onayla</button>
         <button type="button" onClick={handleCancelClick}>
           İptal et
         </button>
